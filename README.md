@@ -10,14 +10,14 @@
 
 ## Installation 
 
-###Cocoapods
+### Cocoapods
 
 ````
 pod 'IndexBar'
 
 ````
 
-###Platform & Swift version
+### Platform & Swift version
 
 * **>= iOS 10.0**
 * **>= Swift 5.0**
