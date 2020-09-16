@@ -19,21 +19,21 @@ fileprivate enum IndexSectionState {
 
 public struct IndexBarConfigure {
     /// section normal titcle color
-    var titleColor: UIColor = .lightGray
+    public var titleColor: UIColor = .lightGray
     /// section title font
-    var titleFont: UIFont = UIFont.systemFont(ofSize: 10)
+    public var titleFont: UIFont = UIFont.systemFont(ofSize: 10)
     /// section selected titcle color
-    var titleColorForSelected: UIColor = .white
+    public var titleColorForSelected: UIColor = .white
     /// section selected background color
-    var backgroundColorForSelected: UIColor = .blue
+    public var backgroundColorForSelected: UIColor = .blue
     /// section width&height
-    var sectionWH: CGFloat = 16
+    public var sectionWH: CGFloat = 16
     /// section vertical spacing
-    var sectionSpacing: CGFloat = 4
+    public var sectionSpacing: CGFloat = 4
     /// show bubble view, default is true
-    var showBubble = true
+    public var showBubble = true
     /// the configure of the bubble view
-    var bubbleConfigure = BubbleConfigure()
+    public var bubbleConfigure = BubbleConfigure()
 }
 
 public class IndexBar: UIView, UITableViewDelegate {
@@ -72,7 +72,7 @@ public class IndexBar: UIView, UITableViewDelegate {
         }
     }
     
-    ///如果想监听切换section的回调可实现此代理
+    ///if you want to listen the callback of section seleced, please set the delegate(如果想监听切换section的回调可实现此代理)
     weak var delegate: IndexBarDelegate?
     /// configure index bar
     public var configure: ((inout IndexBarConfigure) -> ())? {

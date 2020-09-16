@@ -8,10 +8,10 @@
 
 import UIKit
 
-struct BubbleConfigure {
-    var font: UIFont = .systemFont(ofSize: 22, weight: .medium)
-    var textColor: UIColor = .white
-    var backgroundColor = UIColor.lightGray.withAlphaComponent(0.6)
+public struct BubbleConfigure {
+    public var font: UIFont = .systemFont(ofSize: 22, weight: .medium)
+    public var textColor: UIColor = .white
+    public var backgroundColor = UIColor.lightGray.withAlphaComponent(0.6)
 }
 
 class IndexBarBubbleView: UIView {
