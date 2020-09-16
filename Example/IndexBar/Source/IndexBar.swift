@@ -17,7 +17,7 @@ fileprivate enum IndexSectionState {
     case selected
 }
 
-struct IndexBarConfigure {
+public struct IndexBarConfigure {
     /// section normal titcle color
     var titleColor: UIColor = .lightGray
     /// section title font
@@ -36,7 +36,7 @@ struct IndexBarConfigure {
     var bubbleConfigure = BubbleConfigure()
 }
 
-class IndexBar: UIView, UITableViewDelegate {
+public class IndexBar: UIView, UITableViewDelegate {
 
     @IBInspectable private var titleColor: UIColor? {
         willSet {
@@ -73,7 +73,7 @@ class IndexBar: UIView, UITableViewDelegate {
     }
     
     ///如果想监听切换section的回调可实现此代理
-    public weak var delegate: IndexBarDelegate?
+    weak var delegate: IndexBarDelegate?
     /// configure index bar
     public var configure: ((inout IndexBarConfigure) -> ())? {
         willSet {
@@ -131,7 +131,7 @@ class IndexBar: UIView, UITableViewDelegate {
         lastSelectedLabel = nil
         subLabels.removeAll()
         observe = nil
-        removeSubviews()
+        subviews.forEach({$0.removeFromSuperview()})
     }
     
     private func addBubbleView() {
@@ -204,17 +204,17 @@ class IndexBar: UIView, UITableViewDelegate {
     
     // MARK: - Touch Event
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
         guard let point = event?.touches(for: self)?.first?.location(in: self) else {return}
         selectSection(point: point)
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         guard let point = event?.touches(for: self)?.first?.location(in: self) else {return}
         selectSection(point: point)
@@ -222,72 +222,4 @@ class IndexBar: UIView, UITableViewDelegate {
     }
 }
 
-struct BubbleConfigure {
-    var font: UIFont = .systemFont(ofSize: 22, weight: .medium)
-    var textColor: UIColor = .white
-    var backgroundColor = UIColor.lightGray.withAlphaComponent(0.6)
-}
 
-fileprivate class IndexBarBubbleView: UIView {
-    
-    private var label: UILabel?
-    private var configure: BubbleConfigure
-    
-    init(frame: CGRect, configure: BubbleConfigure) {
-        self.configure = configure
-        super.init(frame: frame)
-        let label = UILabel.init(frame: bounds)
-        label.textColor = self.configure.textColor
-        label.font = self.configure.font
-        label.textAlignment = .center
-        backgroundColor = .clear
-        addSubview(label)
-        self.label = label
-    }
-    
-    public func hide() {
-        UIView.animate(withDuration: 0.2) {
-            self.alpha = 0
-        }
-    }
-    
-    func show(_ title: String?, on position: CGPoint) {
-        label?.text = title
-        center = position
-        if alpha == 0 {
-            alpha = 1
-        }
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func draw(_ rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
-        context?.setLineWidth(2.0)
-        context?.setFillColor(configure.backgroundColor.cgColor)
-        setDrawPath(context)
-        context?.fillPath()
-    }
-    
-    private func setDrawPath(_ context: CGContext?) {
-        guard let context = context else {return}
-        let width = bounds.width
-        let height = bounds.height
-        let x = width/4
-        let y = height/4
-        let radius = sqrt(pow(x, 2) + pow(y, 2))
-        
-        //Draw triangle
-        context.move(to: CGPoint(x: width - x, y: height * 0.5 - y))
-        context.addLine(to: CGPoint(x: width, y: height * 0.5))
-        context.addLine(to: CGPoint(x: width - x, y: height * 0.5 + y))
-        
-        //Draw semicircle
-        context.addArc(tangent1End: CGPoint(x: width * 0.5, y: height), tangent2End: CGPoint(x: width * 0.5 - x, y: height * 0.5 + y), radius: radius)
-        context.addArc(tangent1End: CGPoint(x: 0, y: height * 0.5), tangent2End: CGPoint(x: width * 0.5 - x, y: height * 0.5 - y), radius: radius)
-        context.addArc(tangent1End: CGPoint(x: width * 0.5, y: 0), tangent2End: CGPoint(x: width * 0.5 + x, y: height * 0.5 - y), radius: radius)
-        context.closePath()
-    }
-}
