@@ -1,3 +1,4 @@
+![](https://github.com/rainedAllNight/IndexBar/blob/master/IndexBar%401x.png)
 # IndexBar
 ### A index bar for tableview with Swift
 

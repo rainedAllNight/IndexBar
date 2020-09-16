@@ -1,1 +1,2 @@
-*.ruby linguist-language=Swift
+
+*.rb linguist-language=Swift
