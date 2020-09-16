@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol IndexBarDelegate: class {
+public protocol IndexBarDelegate: class {
     func indexBar(_ indexBar: IndexBar, didSelected index: Int)
 }
 
@@ -73,7 +73,7 @@ public class IndexBar: UIView, UITableViewDelegate {
     }
     
     ///if you want to listen the callback of section seleced, please set the delegate(如果想监听切换section的回调可实现此代理)
-    weak var delegate: IndexBarDelegate?
+    public weak var delegate: IndexBarDelegate?
     /// configure index bar
     public var configure: ((inout IndexBarConfigure) -> ())? {
         willSet {
