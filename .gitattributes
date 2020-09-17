@@ -1,0 +1,9 @@
+
+*.rb linguist-language=swift
+*.podspec linguist-language=swift
+
+*.storyboard linguist-language=swift
+*.json linguist-language=swift
+
+
+*.xcodeproj linguist-language=swift
