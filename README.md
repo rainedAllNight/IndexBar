@@ -1,5 +1,5 @@
 ![](https://github.com/rainedAllNight/IndexBar/blob/master/IndexBar%401x.png)
-# IndexBar
+
 ### A index bar for tableview with Swift
 
 ### 一个tableView的索引控件，UI仿照于微信联系人页面, 使用Swift编写
