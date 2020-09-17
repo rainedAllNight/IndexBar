@@ -4,3 +4,6 @@
 
 *.storyboard linguist-language=Swift
 *.json linguist-language=Swift
+
+
+*.xcodeproj linguist-language=Swift
