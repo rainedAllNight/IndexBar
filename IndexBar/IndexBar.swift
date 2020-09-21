@@ -139,7 +139,7 @@ public class IndexBar: UIView, UITableViewDelegate {
         self.bubbleView?.removeFromSuperview()
         let bubbleView = IndexBarBubbleView.init(frame: CGRect(x: -80, y: 0, width: 60, height: 60), configure: _configure.bubbleConfigure)
         addSubview(bubbleView)
-        bubbleView.hide()
+        bubbleView.alpha = 0
         self.bubbleView = bubbleView
     }
     
