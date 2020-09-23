@@ -18,11 +18,11 @@ fileprivate enum IndexSectionState {
 }
 
 public struct IndexBarConfigure {
-    /// section normal titcle color
+    /// section normal title color
     public var titleColor: UIColor = .lightGray
     /// section title font
     public var titleFont: UIFont = UIFont.systemFont(ofSize: 10)
-    /// section selected titcle color
+    /// section selected title color
     public var titleColorForSelected: UIColor = .white
     /// section selected background color
     public var backgroundColorForSelected: UIColor = .blue

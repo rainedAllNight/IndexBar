@@ -14,6 +14,7 @@
 ### Cocoapods
 
 ````
+
 pod 'IndexBar'
 
 ````
@@ -28,25 +29,25 @@ pod 'IndexBar'
 ### you can init the IndexBar with frame or start with storyBoard&xib(代码初始化或者直接在storyboard中使用)
 
 ````
-        let indexBar = IndexBar(frame: CGRect(x: view.bounds.width - 24, y: 0, width: 40, height: view.bounds.height))
-        indexBar.configure = { configure in
-            configure.sectionWH = 16
-            configure.titleFont = UIFont.systemFont(ofSize: 12)
-            configure.backgroundColorForSelected = UIColor.color(withHex: "#53ED7C")
-        }
-        indexBar.setData(sectionTitles, tableView: tableView)
-        view.addSubview(indexBar)
+    let indexBar = IndexBar(frame: CGRect(x: view.bounds.width - 24, y: 0, width: 40, height: view.bounds.height))
+    indexBar.configure = { configure in
+        configure.sectionWH = 16
+        configure.titleFont = UIFont.systemFont(ofSize: 12)
+        configure.backgroundColorForSelected = UIColor.color(withHex: "#53ED7C")
+    }
+    indexBar.setData(sectionTitles, tableView: tableView)
+    view.addSubview(indexBar)
 
 ````
 
 ### IndexBar configure(相关配置项)
 
 ```
-    /// section normal titcle color
+    /// section normal title color
     public var titleColor: UIColor = .lightGray
     /// section title font
     public var titleFont: UIFont = UIFont.systemFont(ofSize: 10)
-    /// section selected titcle color
+    /// section selected title color
     public var titleColorForSelected: UIColor = .white
     /// section selected background color
     public var backgroundColorForSelected: UIColor = .blue
